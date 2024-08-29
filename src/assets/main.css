@@ -43,6 +43,7 @@ button {
   font-size: large;
   background-color: white;
   height: fit-content;
+  width: 270px;
 }
 
 button:hover {

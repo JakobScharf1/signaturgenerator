@@ -64,7 +64,7 @@
               <label>E-Mail:</label>
             </td>
             <td>
-              <input v-model="email" type="email">
+              <input v-model="email" type="email" @change="emailChange">
             </td>
           </tr>
           <tr>
@@ -80,114 +80,127 @@
       </td>
       <td class="right-align">
         <h1 style="text-align: right;">Vorschau</h1>
-        <div ref="signature" class="signature">
-          <!---  Signatur START  --->
-          <table style="color:#202124; width:800px">
-            <tbody>
-            <tr>
-              <td style="width:800px">
-                <table>
-                  <tbody>
-                  <tr>
-                    <td><img :src="picURL" style="height:130px; margin-right:15px; width:130px" alt="Portrait" /></td>
-                    <td>
-                      <p><strong>{{ name }}</strong></p>
+        <!---  Signatur START  --->
+        <div id="signaturecode" class="signature">
+          <div ref="signaturecode">
+            <table style="color:#202124; width:800px; flex-basis:auto">
+              <tbody>
+              <tr>
+                <td style="width:800px">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <td><img :src="picURL" style="height:130px; margin-right:15px; width:130px" alt="Portrait" /></td>
+                      <td>
+                        <p><strong>{{ name }}</strong></p>
 
-                      <p>{{ position }}<br />
-                        {{ company }}</p>
-                    </td>
-                    <td style="width:30px">&nbsp;</td>
-                    <td style="border-bottom:none; border-left:1px solid #021e26; width:1px">&nbsp;</td>
-                    <td style="width:15px">&nbsp;</td>
-                    <td>
-                      <table>
-                        <tbody>
-                        <tr>
-                          <td>
-                            <table>
-                              <tbody>
-                              <tr>
-                                <td><img src="https://i.ibb.co/72d2DPg/phone-icon.png" alt="Telefon"/></td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                          <td><a :href="telLink" style="color:#021e26;font-size:12px">{{ tel }}</a></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <table>
-                              <tbody>
-                              <tr>
-                                <td><img src="https://i.ibb.co/9HVnwx4/mail-icon.png" alt="Email" /></td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                          <td><a :href="emailLink" style="color:#021e26;font-size:12px">{{ email }}</a></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <table>
-                              <tbody>
-                              <tr>
-                                <td><img src="https://i.ibb.co/tzsD9mp/webicon.png" alt="Website" /></td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                          <td><a :href="companyURL" style="color:#021e26;font-size:12px">{{ companyURLShort }}</a></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <table>
-                              <tbody>
-                              <tr>
-                                <td><img src="https://i.ibb.co/8K8fY36/location-icon.png" alt="Location" /></td>
-                              </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                          <td><span style="color:#021e26; font-size:12px">{{ locationAddress }}</span></td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td style="width:723px">
-                <table style="width:734px">
-                  <tbody>
-                  <tr>
-                    <td style="border-bottom:1px solid #021e26; border-left:none; height:1px; width:723px">&nbsp;</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td style="width:723px">
-                <table style="width:734px">
-                  <tbody>
-                  <tr>
-                    <td style="vertical-align:top"><a :href="companyURL"><img :src="logoLink" alt="Company Logo" /></a></td>
-                    <td>&nbsp;</td>
-                    <td style="width:205.156px"><a :href="linkedin" style="padding:0px; float:right" target="_blank"><img alt="linkedin" src="https://i.ibb.co/SQ560NH/linkedin-icon-1.png" /></a></td>
-                    <td style="width:1px">&nbsp;</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <p><img alt="" src="https://wematch-intern.de/bilder/wm-kununu-signatur_400%20%281%29.jpg" /></p>
-          <!---  Signatur ENDE  --->
+                        <p>{{ position }}<br />
+                          {{ company }}</p>
+                      </td>
+                      <td style="width:30px">&nbsp;</td>
+                      <td style="border-bottom:none; border-left:1px solid #021e26; width:1px">&nbsp;</td>
+                      <td style="width:15px">&nbsp;</td>
+                      <td>
+                        <table>
+                          <tbody>
+                          <tr>
+                            <td>
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><img src="https://i.ibb.co/72d2DPg/phone-icon.png" alt="Telefon"/></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td><a :href="telLink" style="color:#021e26;font-size:12px">{{ tel }}</a></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><img src="https://i.ibb.co/9HVnwx4/mail-icon.png" alt="Email" /></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td><a :href="emailLink" style="color:#021e26;font-size:12px">{{ email }}</a></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><img src="https://i.ibb.co/tzsD9mp/webicon.png" alt="Website" /></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td><a :href="companyURL" style="color:#021e26;font-size:12px">{{ companyURLShort }}</a></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <table>
+                                <tbody>
+                                <tr>
+                                  <td><img src="https://i.ibb.co/8K8fY36/location-icon.png" alt="Location" /></td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td><span style="color:#021e26; font-size:12px">{{ locationAddress }}</span></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:723px">
+                  <table style="width:734px">
+                    <tbody>
+                    <tr>
+                      <td style="border-bottom:1px solid #021e26; border-left:none; height:1px; width:723px">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:723px">
+                  <table style="width:734px">
+                    <tbody>
+                    <tr>
+                      <td style="vertical-align:top"><a :href="companyURL" target="_blank"><img :src="logoLink" alt="Company Logo" /></a></td>
+                      <td>&nbsp;</td>
+                      <td style="width:205.156px"><a :href="linkedin" style="padding:0px; float:right" target="_blank"><img alt="linkedin" src="https://i.ibb.co/SQ560NH/linkedin-icon-1.png" /></a></td>
+                      <td style="width:1px">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <p><img alt="" src="https://wematch-intern.de/bilder/wm-kununu-signatur_400%20%281%29.jpg" /></p>
+          </div>
         </div>
+        <!---  Signatur ENDE  --->
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td>
+        <button class="btn-primary outlined">How-To:<br/>Signaturen einfügen</button>
+      </td>
+      <td class="right-align">
+        <button class="btn-primary" style="margin-right: 10px" @click="copyHtmlCode">Kopieren für bullhorn</button>
+        <button class="btn-primary" @click="copyUserView">Kopieren für Gmail</button>
       </td>
     </tr>
   </table>
@@ -195,6 +208,7 @@
 </template>
 
 <script>
+import * as DbService from "@/DbService.js";
 
 export default {
   data() {
@@ -208,7 +222,7 @@ export default {
       linkedin: "",
       picURL: "",
       telLink: "",
-      emailLink: "mailto:" + this.email,
+      emailLink: "",
       companyURL: "",
       companyURLShort: "",
       locationAddress: "",
@@ -218,6 +232,48 @@ export default {
     }
   },
   methods: {
+
+    copyHtmlCode() {
+      const userViewElement = document.getElementById("signaturecode");
+      const text = userViewElement.innerHTML;
+      this.copyToClipboard(text)
+      alert("Signatur wurde erfolgreich in deine Zwischenablage kopiert. Du kannst sie jetzt bei bullhorn einfügen.")
+    },
+
+    copyUserView() {
+      const userView = document.getElementById("signaturecode")
+      const tempElement = document.createElement('div');
+      tempElement.style.position = 'absolute'
+      tempElement.style.left = '-9999px'
+      tempElement.style.backgroundColor = '#fff'
+      tempElement.innerHTML = userView.innerHTML
+
+      document.body.appendChild(tempElement)
+
+      try {
+        const selection = window.getSelection()
+        const range = document.createRange()
+        range.selectNodeContents(tempElement)
+        selection.removeAllRanges()
+        selection.addRange(range)
+        document.execCommand('copy')
+        alert("Signatur wurde erfolgreich in deine Zwischenablage kopiert. Du kannst sie jetzt bei Gmail einfügen.")
+      } catch (err) {
+        console.error("Fehler beim Kopieren")
+      } finally {
+        document.body.removeChild(tempElement)
+        window.getSelection().removeAllRanges()
+      }
+    },
+
+    copyToClipboard(text) {
+      try {
+        navigator.clipboard.writeText(text)
+      } catch (err) {
+        console.error("Fehler beim Kopieren: ", err)
+      }
+    },
+
     companyChange() {
       if(this.company === ("WeMatch Consulting GmbH" || "WeMatch Engineering GmbH")){
         this.logoLink = "https://signatur.wematch-intern.de/resources/wematch-logo.png";
@@ -255,8 +311,12 @@ export default {
 
     linkedinChange() {
       this.incorrectLinkedin = !this.linkedin.startsWith('https://linkedin.com/in/' || 'https://www.linkedin.com/in/');
-    }
+    },
 
+    async emailChange() {
+      this.picURL = await DbService.getPortrait(this.email)
+      this.emailLink = "mailto:" + this.email
+    }
   }
 }
 
@@ -284,6 +344,17 @@ export default {
 
 .error-text {
   color: red;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.outlined:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 </style>
