@@ -192,15 +192,14 @@
         <!---  Signatur ENDE  --->
       </td>
     </tr>
-  </table>
-  <table>
-    <tr>
-      <td>
-        <button class="btn-primary outlined">How-To:<br/>Signaturen einfügen</button>
-      </td>
+    <tr style="width:100%">
+      <td></td>
       <td class="right-align">
-        <button class="btn-primary" style="margin-right: 10px" @click="copyHtmlCode">Kopieren für bullhorn</button>
-        <button class="btn-primary" @click="copyUserView">Kopieren für Gmail</button>
+        <a href="">
+          <button class="howto outlined">How-To: Signaturen einfügen</button>
+        </a>
+        <button class="copy-button" style="margin-right: 10px" @click="copyHtmlCode">Kopieren für bullhorn</button>
+        <button class="copy-button" @click="copyUserView">Kopieren für Gmail</button>
       </td>
     </tr>
   </table>
@@ -332,8 +331,9 @@ export default {
 .signature {
   font-family: Arial, sans-serif;
   background-color: #fff;
-  height: 35rem;
-  width: 60rem;
+  height: 30rem;
+  width: 55rem;
+  margin-bottom: 5px;
 }
 
 .right-align {
@@ -355,6 +355,22 @@ export default {
 .outlined:hover {
   background-color: #fff;
   color: #000;
+}
+
+.copy-button {
+  box-shadow: 0px 0px 10px white;
+}
+
+.copy-button:hover {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.howto {
+  font-size: 14px;
+  padding: 9px 0 9px 0;
+  margin-right: 10px;
 }
 
 </style>
