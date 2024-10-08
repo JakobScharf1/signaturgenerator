@@ -291,7 +291,7 @@ export default {
       } else if(this.location === "hamburg") {
         this.locationAddress = "c/o The Office Group, Schopenstehl 13, 20095 Hamburg";
       } else if(this.location === "duesseldorf") {
-        this.locationAddress = "c/o Design Offices, Kaistr. 5, 40221 Düsseldorf";
+        this.locationAddress = "c/o Mindspace, Grünstr. 15, 40212 Düsseldorf";
       } else if(this.location === "muenchen") {
         this.locationAddress = "c/o Design Offices, Luise-Ullrich-Str. 14, 80636 München";
       } else if(this.location === "frankfurt") {
