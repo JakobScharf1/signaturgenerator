@@ -72,8 +72,7 @@
               <label>LinkedIn:</label>
             </td>
             <td>
-              <input v-model="linkedin" type="url" placeholder="https://linkedin.com/in/max-mustermann" @change="linkedinChange">
-              <span class="error-text" v-if="incorrectLinkedin"><br />Ungültiger Link.</span>
+              <input v-model="linkedin" type="url" placeholder="https://linkedin.com/in/max-mustermann">
             </td>
           </tr>
         </table>
@@ -195,7 +194,7 @@
     <tr style="width:100%">
       <td></td>
       <td class="right-align">
-        <a href="">
+        <a href="https://docs.google.com/document/d/1zdj-zWOcgPLFWUVd4rWJq0JgY2G0Plkz2dYyh-TBrls/edit?usp=sharing" target="_blank">
           <button class="howto outlined">How-To: Signaturen einfügen</button>
         </a>
         <button class="copy-button" style="margin-right: 10px" @click="copyHtmlCode">Kopieren für bullhorn</button>
@@ -227,7 +226,6 @@ export default {
       locationAddress: "",
       logoLink: "",
       incorrectTel: false,
-      incorrectLinkedin: false,
     }
   },
   methods: {
@@ -306,10 +304,6 @@ export default {
       } else {
         this.incorrectTel = true;
       }
-    },
-
-    linkedinChange() {
-      this.incorrectLinkedin = !this.linkedin.startsWith('https://linkedin.com/in/' || 'https://www.linkedin.com/in/');
     },
 
     async emailChange() {
