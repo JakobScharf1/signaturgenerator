@@ -76,6 +76,8 @@
             </td>
           </tr>
         </table>
+        <p id="portrait-advice">Dein Portraitbild wird automatisch nach Eingabe der Email-Adresse eingefügt. Falls das nicht der Fall ist, melde dich bitte bei Team Operations.</p>
+
       </td>
       <td class="right-align">
         <h1 style="text-align: right;">Vorschau</h1>
@@ -307,7 +309,14 @@ export default {
     },
 
     async emailChange() {
-      this.picURL = await DbService.getPortrait(this.email)
+      try {
+        await DbService.getPortrait(this.email).then(response => {
+          this.picURL = response
+          document.getElementById("portrait-advice").style.color = "white";
+        })
+      } catch (error){
+        document.getElementById("portrait-advice").style.color = "red";
+      }
       this.emailLink = "mailto:" + this.email
     }
   }
@@ -365,6 +374,11 @@ export default {
   font-size: 14px;
   padding: 9px 0 9px 0;
   margin-right: 10px;
+}
+
+#portrait-advice {
+  color: white;
+  font-size: small;
 }
 
 </style>
